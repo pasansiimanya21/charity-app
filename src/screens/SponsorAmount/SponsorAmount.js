@@ -23,6 +23,11 @@ import CustomButton from "../../components/CustomButton/CustomButton";
         setDonation(amount);
         navigation.navigate("Donation");
     }
+
+    const onpayment =()=>{
+        
+        navigation.navigate("RecurringScreen");
+    }
     
     return(
 
@@ -76,7 +81,7 @@ import CustomButton from "../../components/CustomButton/CustomButton";
 
         
         <View style={{bottom:100}}>
-        <SecondaryButton text="Do Recurring Payment"></SecondaryButton>
+        <SecondaryButton onPress={onpayment} text="Do Recurring Payment"></SecondaryButton>
         </View>
         </View>       
     )

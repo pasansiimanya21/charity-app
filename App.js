@@ -9,6 +9,7 @@ import ProfileScreen from "./src/screens/ProfileScreen";
 import Donation from "./src/screens/Donation/Donation";
 import DonateAmount from "./src/screens/DonateAmount";
 import SponsorAmount from "./src/screens/SponsorAmount";
+import RecurringScreen from "./src/screens/RecurringScreen";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -40,6 +41,7 @@ export default function App() {
             <Stack.Screen name="SponsorScreen" component={SponsorScreen} />
             <Stack.Screen name="DonateAmount" component={DonateAmount} />
             <Stack.Screen name="SponsorAmount" component={SponsorAmount} />
+            <Stack.Screen name="RecurringScreen" component={RecurringScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </PaymentContextProvider>
