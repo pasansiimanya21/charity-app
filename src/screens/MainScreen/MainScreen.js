@@ -13,7 +13,7 @@ import MainButton from "../../components/MainButton";
 import { firebase } from "../../../firebase";
 import { useNavigation } from "@react-navigation/native";
 import CustomHeader from "../../components/CustomHeader/CustomHeader";
-import {hamburger} from "../../../assets/hamburger.png";
+import {tabbar} from "../../../assets/tabbar.png";
 import { ImageBackground } from "react-native";
 
 const MainScreen = () => {
@@ -79,6 +79,11 @@ const MainScreen = () => {
       
       
       <CustomButton onPress={signOut} text="Logout"></CustomButton>
+
+      
+          <Image source={tabbar} style={styles.image} />
+                
+      
       
     </View>
   );
@@ -87,13 +92,30 @@ const MainScreen = () => {
 const styles = StyleSheet.create({
   text: {
     alignSelf: "center",
-    top: 150,
+    top: 200,
     fontWeight: "bold",
   },
 
   hamburger:{
     top:0,
-  }
+  },
+
+  backgroundContainer: {
+    
+    top: 50,
+    
+  },
+
+  image:{
+        
+    
+    top:250,
+    
+
+    
+},
 });
+
+
 
 export default MainScreen;
