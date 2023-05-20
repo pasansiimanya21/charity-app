@@ -2,9 +2,11 @@ import {
   View,
   Text,
   StyleSheet,
+  Image,
   useWindowDimensions,
   TextInput,
   Pressable,
+  ImageBackground,
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import SecondaryButton from "../../components/SecondaryButton";
@@ -12,6 +14,7 @@ import CustomHeader from "../../components/CustomHeader/CustomHeader";
 import { db } from "../../../config";
 import { ref, onValue } from "firebase/database";
 import { useNavigation } from "@react-navigation/native";
+import {tabbar} from "../../../assets/tabbar.png";
 import { PaymentContext } from "../../context/PaymentContext";
 
 const DonationBoard = () => {
@@ -73,6 +76,7 @@ const DonationBoard = () => {
     <View>
       <CustomHeader></CustomHeader>
       <Text style={styles.heading}>Organization Expenses</Text>
+      
       <View style={styles.column}>
         <View style={styles.row}>
           <Pressable
@@ -164,11 +168,19 @@ const DonationBoard = () => {
         setDonation(5000);
       }} text="Donate"></SecondaryButton> */}
       <SecondaryButton onPress={DonatePressed} text="Donate"></SecondaryButton>
+      <View style={styles.con}>
+        <Image source={tabbar} style={styles.image} />
+      </View>
+      
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  con:{
+    top:600,
+
+  },
   container: {
     backgroundColor: "#B58DDD",
     padding: 15,
@@ -226,6 +238,12 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-between",
   },
+
+  image:{
+    
+    width:'100%',
+    height:'100%'
+  }
 });
 
 export default DonationBoard;
