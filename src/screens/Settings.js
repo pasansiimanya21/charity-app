@@ -1,49 +1,15 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Profile from "../screens/Profile";
-import Settings from "../screens/Settings";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import MainControlScreen from "../screens/MainControlScreen/MainControlScreen";
+import CustomHeader from "../components/CustomHeader/CustomHeader";
 
-const Tab = createBottomTabNavigator();
-
-const HomeScrenn = () => {
+const Settings = () => {
   return (
-    <Tab.Navigator
-      screenOptions={{ headerShown: false, tabBarActiveTintColor: "#A46DDB" }}
-    >
-      <Tab.Screen
-        name="Home"
-        component={MainControlScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="home" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Profile"
-        component={Profile}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="face-man" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Settings"
-        component={Settings}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="hammer-wrench" size={size} color={color} />
-          ),
-        }}
-      />
-    </Tab.Navigator>
+    <View>
+      <CustomHeader />
+    </View>
   );
 };
 
-export default HomeScrenn;
+export default Settings;
 
 const styles = StyleSheet.create({});
