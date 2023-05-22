@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   View,
   Text,
@@ -14,10 +14,12 @@ import { firebase } from "../../../firebase";
 import { useNavigation } from "@react-navigation/native";
 import CustomHeader from "../../components/CustomHeader/CustomHeader";
 import {tabbar} from "../../../assets/tabbar.png";
+import { AuthContext } from "../../context/AuthContext";
 import { ImageBackground } from "react-native";
 
 const MainScreen = () => {
   const [name, setName] = useState("");
+  const { setAuth } = useContext(AuthContext);
 
   // change the password
 
@@ -40,6 +42,7 @@ const MainScreen = () => {
       .then((snapshot) => {
         if (snapshot.exists) {
           setName(snapshot.data());
+          setAuth(snapshot.data());
         } else {
           console.log("User does not exist");
         }
@@ -92,7 +95,7 @@ const MainScreen = () => {
 const styles = StyleSheet.create({
   text: {
     alignSelf: "center",
-    top: 200,
+    top: 150,
     fontWeight: "bold",
   },
 

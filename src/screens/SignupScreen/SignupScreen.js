@@ -40,6 +40,7 @@ const SignupScreen =()=>{
                 firebase.firestore().collection('users')
                 .doc(firebase.auth().currentUser.uid)
                 .set({
+                    userUid: firebase.auth().currentUser.uid,
                     firstName,
                     lastName,
                     email,

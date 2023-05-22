@@ -6,11 +6,15 @@ import { useNavigation } from "@react-navigation/native";
 import { CardField, confirmPayment } from "@stripe/stripe-react-native";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import { PaymentContext } from "../../context/PaymentContext";
+import {firebase} from "../../../firebase";
+import { AuthContext } from "../../context/AuthContext";
 
 const Donation = () => {
   const navigation = useNavigation();
 
   const { donation, setStatus } = useContext(PaymentContext);
+  const {auth} = useContext(AuthContext);
+
   const [cardDetails, setCardDetails] = useState(null);
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
@@ -61,6 +65,25 @@ const Donation = () => {
       setError("");
       setSuccess("Your Donation Have Been Completed.");
       setStatus("Donation Have Been Completed.");
+      // set data to firebase
+      firebase
+        .firestore()
+        .collection("payment")
+        .add({
+          userUid: firebase.auth().currentUser.uid,
+          donation,
+          email: auth.email,
+          userName: `${auth.firstName} ${auth.lastName}`,
+        })
+        .then(() => {
+          console.log("Document successfully written!");
+          console.log(auth.email, donation);
+        })
+        .catch((error) => {
+          console.error("Error writing document: ", error);
+        });
+      setStatus("Donation Have Been Completed.");
+
     }
   };
 
