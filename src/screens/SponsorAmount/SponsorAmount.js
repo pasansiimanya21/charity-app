@@ -77,7 +77,9 @@ import CustomButton from "../../components/CustomButton/CustomButton";
 
         </View>
 
-        <Text style={styles.nexttext}>Recurring Sponsoring</Text> 
+        <Text style={styles.nexttext}>Recurring Sponsoring</Text>
+        
+         
 
         
         <View style={{bottom:100}}>
